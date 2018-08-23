@@ -22,12 +22,15 @@ textarea {
 }
 
 .columns:last-child {
-  margin-bottom: 0rem;
+  margin-bottom: 0;
 }
 .box:not(:last-child) {
-  margin-bottom: 0rem;
+  margin-bottom: 0;
 }
 
+.icon {
+    height: inherit;
+}
 .hidden {
   display: none;
 }

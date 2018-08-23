@@ -22,7 +22,7 @@
             </div>
             <div class="field">
                 <p class="control">
-                    <a class="button is-info" @click.prevent="toggleAll();">
+                    <a class="button is-info" @click.prevent="toggleAll()">
                         {{showHideLabel()}}<br>Details
                     </a>
                 </p>
@@ -102,7 +102,7 @@
 
         methods: {
             getRecords() {
-                axios.get("https://dev.aactmad.org/eventServiceJson.php" + "?" + this.getQueryParameters())
+                axios.get(this.endpoint + "?" + this.getQueryParameters())
                     .then(response => {
 
                         this.enhanceEvents(response.data);
@@ -133,7 +133,7 @@
                 return queryString.stringify(queryParms)
             },
             getLastEventDate() {
-                axios.get("https://dev.aactmad.org/eventServiceJson.php")
+                axios.get(this.endpoint)
                     .then(response => {
                         this.lastEventDate = response.data.pop().EventEnd;
                     })
@@ -237,7 +237,7 @@
 
         mounted() {
             this.getRecords();
-            this.getLastEventDate();
+            // this.getLastEventDate();
         },
     }
 </script>
@@ -258,7 +258,7 @@
     }
 
     .columns {
-        margin-left: 0rem;
+        margin-left: 0;
     }
 
     .month-year-tag {
@@ -274,7 +274,7 @@
     }
 
     .current-month {
-        padding: 0rem 1rem 0.5rem 0rem;
+        padding: 0 1rem 0.5rem 0;
     }
 
     .loading {

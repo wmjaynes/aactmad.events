@@ -17,9 +17,8 @@
     </script>
     <script src="/js/navbar.js"></script>
 
-    {{--<link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">--}}
-
-    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/spacelab/bulmaswatch.min.css">
+    <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
+    {{--<link rel="stylesheet" href="https://unpkg.com/bulmaswatch/spacelab/bulmaswatch.min.css">--}}
 
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"/>--}}
 

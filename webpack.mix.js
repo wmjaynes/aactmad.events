@@ -18,4 +18,6 @@ mix.webpackConfig({
 //         processCssUrls: false,
 //     });
 
-mix.js('source/_assets/js/events.js', 'js');
+mix.js('source/_assets/js/events.js', 'js')
+    .sass('source/_assets/sass/main.scss', 'css')
+;

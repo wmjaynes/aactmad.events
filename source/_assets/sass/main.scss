@@ -11,28 +11,37 @@
 // Update the blue shade, used for links
 //$blue: #06bcef;
 
-// Add pink and its invert
+ //Add pink and its invert
 //$pink: #ff8080;
 //$pink-invert: #fff;
+//$orange: #FFB57F;
+//$orange-invert: #000;
+//$blue: blue;
 
 // Update the sans-serif font family
 $family-sans-serif: "Helvetica", "Arial", sans-serif;
 $family-serif: "Crimson Text", serif, serif;
 
-$family-primary: $family-serif !default//$cyan: #add8e6;
+$family-primary: $family-serif !default
 
-//$tablet: 480px;
-
-//$body-size: 16px;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-//$primary: $pink;
-//$primary-invert: $pink-invert;
+//$info: $blue;
+//$info-invert: $blue-invert;
 
 // 4. Import the rest of Bulma
 
 @import "../../../node_modules/bulmaswatch/spacelab/variables";
-//$link: #1192e8;
+
+$link: $blue;
+
 @import "../../../node_modules/bulma/bulma";
+
 @import "../../../node_modules/bulmaswatch/spacelab/overrides";
+
+
+.event-header {
+  @include btn-shadow(lighten($info, 25%));
+  border: 1px solid $info;
+}

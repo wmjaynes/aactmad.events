@@ -37,7 +37,7 @@
         </div>
 
 
-        <div class="level has-text-centered is-info">
+        <div class="level has-text-centered has-background-info">
             <div class="level-left">
                 <a class="button is-info is-narrow-button" @click="decrementDisplayPeriod()">
                     <span class="icon"><i class="far fa-hand-point-left"></i></span>
@@ -128,6 +128,7 @@
                     {
                         startCalendar: this.startOfDisplayPeriod.format("MM/DD/YYYY"),
                         endCalendar: this.endOfDisplayPeriod.format("MM/DD/YYYY"),
+                        orgId: parsed.orgId,
                     };
 
                 return queryString.stringify(queryParms)
@@ -182,6 +183,12 @@
                     event.EventDateYear = eventStartDate.format("YYYY");
 
                     event.displayBody = this.showall;
+                });
+            },
+            handleMultidayEvents(events) {
+                let multidayevents = [];
+                events.forEach(event => {
+
                 });
             },
             generateEventsByMonth(events) {
@@ -250,7 +257,7 @@
 
     .level {
         margin-bottom: 0.5rem;
-        background-color: #e7f4fd;
+        /*background-color: #e7f4fd;*/
     }
 
     .button {

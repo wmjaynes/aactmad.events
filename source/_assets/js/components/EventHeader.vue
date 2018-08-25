@@ -71,13 +71,13 @@
 
     .event-header {
 
-        background-image: linear-gradient(180deg, #e7f4fd, #a0d5f8);
+        /*background-image: linear-gradient(180deg, #e7f4fd, #a0d5f8);*/
 
         cursor: pointer;
         align-items: center;
         margin: 0 -5px;
         line-height: 1rem;
-        border: 1px solid #209cee;
+        /*border: 1px solid #209cee;*/
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;

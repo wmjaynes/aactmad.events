@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://events.aactmad.org/assets/build/css/main.css">
+    <script src="https://events.aactmad.org/assets/build/js/events.js"></script>
+
+    <style>
+        :root {
+            --my-color: orange;
+            --my-other-color: darkorange;
+        }
+
+        .has-background-info {
+            background-color: var(--my-color) !important;
+        }
+
+        .event-header {
+            background-color: var(--my-color);
+            background-image: none;
+            border: 1px solid var(--my-other-color);
+        }
+
+        .event-button {
+            background-color: var(--my-color) !important;
+            background-image: none !important;
+            border: 1px solid var(--my-other-color) !important;
+        }
+        .event-button:hover {
+            background-color: var(--my-other-color) !important;
+            background-image: none !important;
+        }
+
+        .event-content {
+            line-height: 1.1rem;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="app">
+    <events-listing endpoint="https://publicdrum.aactmad.org/eventServiceJson.php" orgid="698"></events-listing>
+</div>
+
+</body>
+</html>

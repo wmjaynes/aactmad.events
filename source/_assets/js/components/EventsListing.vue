@@ -15,14 +15,14 @@
                 </div>
 
                 <p class="control">
-                    <a class="button is-info" @click.prevent="clearQuickSearch()">
+                    <a class="button event-button is-info" @click.prevent="clearQuickSearch()">
                         Clear
                     </a>
                 </p>
             </div>
             <div class="field">
                 <p class="control">
-                    <a class="button is-info" @click.prevent="toggleAll()">
+                    <a class="button event-button is-info" @click.prevent="toggleAll()">
                         {{showHideLabel()}}<br>Details
                     </a>
                 </p>
@@ -31,7 +31,7 @@
 
 
         <div class="has-text-centered loading" v-if="loading">
-            <a class="button is-info is-loading">
+            <a class="button event-button is-info is-loading">
                 Loading
             </a>
         </div>
@@ -39,7 +39,7 @@
 
         <div class="level has-text-centered has-background-info">
             <div class="level-left">
-                <a class="button is-info is-narrow-button" @click="decrementDisplayPeriod()">
+                <a class="button event-button is-info is-narrow-button" @click="decrementDisplayPeriod()">
                     <span class="icon"><i class="far fa-hand-point-left"></i></span>
                     <span>Previous</span>
                 </a>
@@ -51,7 +51,7 @@
                 </strong>
             </div>
             <div class="level-right">
-                <a class="button is-info is-narrow-button" @click="incrementDisplayPeriod()">
+                <a class="button event-button is-info is-narrow-button" @click="incrementDisplayPeriod()">
                     <span>Next</span>
                     <span class="icon"><i class="far fa-hand-point-right"></i></span>
                 </a>
@@ -85,7 +85,8 @@
 
     export default {
         name: "events-listing",
-        props: ['endpoint'],
+        props: ['endpoint',
+                'orgid'],
         data() {
             return {
                 events: [],
@@ -124,11 +125,14 @@
                 else {
                     this.endOfDisplayPeriod = this.startOfDisplayPeriod.clone().startOf('day').add(5, "month").endOf("month");
                 }
+                console.log("this.orgid: "+this.orgid)
+                console.log("parsed.orgid: "+parsed.orgId)
+                let orgid = this.orgid ? this.orgid : parsed.orgId;
                 let queryParms =
                     {
                         startCalendar: this.startOfDisplayPeriod.format("MM/DD/YYYY"),
                         endCalendar: this.endOfDisplayPeriod.format("MM/DD/YYYY"),
-                        orgId: parsed.orgId,
+                        orgId: orgid,
                     };
 
                 return queryString.stringify(queryParms)

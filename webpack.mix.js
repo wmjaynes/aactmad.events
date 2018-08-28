@@ -11,13 +11,17 @@ mix.webpackConfig({
     ]
 });
 
+mix
+    .sass('source/_assets/sass/main.scss', 'css')
+    .js('source/_assets/js/events.js', 'js')
+
+// .sass('source/_assets/sass/green.scss', 'css')
+// .sass('source/_assets/sass/orange.scss', 'css')
+;
+
 // mix.js('source/_assets/js/main.js', 'js')
 //     .sass('source/_assets/sass/main.scss', 'css')
 //     .sass('source/_assets/sass/aactmad.scss', 'css')
 //     .options({
 //         processCssUrls: false,
 //     });
-
-mix.js('source/_assets/js/events.js', 'js')
-    .sass('source/_assets/sass/main.scss', 'css')
-;

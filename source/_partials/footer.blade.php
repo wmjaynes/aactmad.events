@@ -1,4 +1,4 @@
-<footer class="footer has-text-centered">
+<footer class="footer has-text-centered has-background-info">
 
     <div class="level has-text-centered">
         <div class="level-item has-text-centered is-size-3">

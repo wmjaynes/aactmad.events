@@ -3,58 +3,47 @@
 
     <div>
 
-        <div class="field is-grouped is-grouped-centered">
-
-            <div class="field has-addons">
-                <div class="control has-icons-left">
-                    <input class="input is-narrow" type="text" placeholder="Quick Search"
-                           v-model="quickSearchQuery">
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-search"></i>
-                    </span>
-                </div>
-
-                <p class="control">
-                    <a class="button event-button is-info" @click.prevent="clearQuickSearch()">
-                        Clear
-                    </a>
-                </p>
-            </div>
-            <div class="field">
-                <p class="control">
-                    <a class="button event-button is-info" @click.prevent="toggleAll()">
-                        {{showHideLabel()}}<br>Details
-                    </a>
-                </p>
-            </div>
-        </div>
-
 
         <div class="has-text-centered loading" v-if="loading">
-            <a class="button event-button is-info is-loading">
-                Loading
-            </a>
+            <a class="button event-button is-info is-loading"> Loading </a>
         </div>
 
+        <div v-else>
+            <div class="field is-grouped is-grouped-centered">
 
-        <div class="level has-text-centered has-background-info">
-            <div class="level-left">
-                <a class="button event-button is-info is-narrow-button" @click="decrementDisplayPeriod()">
-                    <span class="icon"><i class="far fa-hand-point-left"></i></span>
-                    <span>Previous</span>
-                </a>
+                <div class="field has-addons">
+                    <div class="control has-icons-left">
+                        <input class="input is-narrow" type="text" placeholder="Quick Search"
+                               v-model="quickSearchQuery"> <span class="icon is-small is-left">
+                      <i class="fas fa-search"></i>
+                    </span>
+                    </div>
+
+                    <p class="control">
+                        <a class="button event-button is-info" @click.prevent="clearQuickSearch()"> Clear </a>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <a class="button event-button is-info" @click.prevent="toggleAll()"> {{showHideLabel()}}<br>Details
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div class="level-item">
-                <strong>
-                    {{this.startOfDisplayPeriod.format("MMM YYYY")}} -
-                    {{this.endOfDisplayPeriod.format("MMM YYYY")}}
-                </strong>
-            </div>
-            <div class="level-right">
-                <a class="button event-button is-info is-narrow-button" @click="incrementDisplayPeriod()">
-                    <span>Next</span>
-                    <span class="icon"><i class="far fa-hand-point-right"></i></span>
-                </a>
+
+            <div class="level has-text-centered has-background-info">
+                <div class="level-left">
+                    <a class="button event-button is-info is-narrow-button" @click="decrementDisplayPeriod()"> <span
+                            class="icon"><i class="far fa-hand-point-left"></i></span> <span>Previous</span> </a>
+                </div>
+                <div class="level-item">
+                    <strong> {{this.startOfDisplayPeriod.format("MMM YYYY")}} -
+                        {{this.endOfDisplayPeriod.format("MMM YYYY")}} </strong>
+                </div>
+                <div class="level-right">
+                    <a class="button event-button is-info is-narrow-button" @click="incrementDisplayPeriod()"> <span>Next</span>
+                        <span class="icon"><i class="far fa-hand-point-right"></i></span> </a>
+                </div>
             </div>
         </div>
 
@@ -86,7 +75,7 @@
     export default {
         name: "events-listing",
         props: ['endpoint',
-                'orgid'],
+            'orgid'],
         data() {
             return {
                 events: [],
@@ -125,8 +114,8 @@
                 else {
                     this.endOfDisplayPeriod = this.startOfDisplayPeriod.clone().startOf('day').add(5, "month").endOf("month");
                 }
-                console.log("this.orgid: "+this.orgid)
-                console.log("parsed.orgid: "+parsed.orgId)
+                console.log("this.orgid: " + this.orgid)
+                console.log("parsed.orgid: " + parsed.orgId)
                 let orgid = this.orgid ? this.orgid : parsed.orgId;
                 let queryParms =
                     {

@@ -1,0 +1,37 @@
+////////////////////////////////////////////////
+// SPACELAB
+////////////////////////////////////////////////
+$grey-darker:  #2d2d2d;
+$grey-dark:    #333;
+$grey:         #777;
+$grey-light:   #999;
+$grey-lighter: #eee;
+
+$orange:       #D47500;
+$green:        #3CB521;
+$blue:         #3399F3;
+$red:          #CD0200;
+$brown:        #F3D9B3;
+$brown-invert: #000;
+$dark-brown:   #6E6102;
+
+$primary: #446E9B !default;
+$warning: $orange;
+$warning-invert: #fff;
+//$link: #807f7f;
+
+
+$info: darken($brown, 10%);
+$info-invert: $brown-invert;
+//$info: $blue;
+
+$link: darken($info, 35%);
+
+$family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$family-serif: "Crimson Text", serif;
+$family-primary: $family-serif !default
+
+$subtitle-color: $grey;
+
+$navbar-item-active-color: $primary;
+$navbar-item-hover-background-color: transparent;

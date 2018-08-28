@@ -69,6 +69,8 @@
 
 <style scoped lang="scss">
 
+    @import "../../sass/main.scss";
+
     .event-header {
 
         /*background-image: linear-gradient(180deg, #e7f4fd, #a0d5f8);*/
@@ -95,7 +97,7 @@
     }
 
     .event-date-badge {
-        background: #0C2D5B;
+        background: darken($info, 45%);
         border-radius: 100%;
         height: 4rem;
         width: 4rem;
@@ -112,9 +114,10 @@
     }
 
     .event-date-box {
+        background: darken($info, 45%);
         max-width: 6rem;
         min-width: 6rem;
-        background: #0C2D5B;
+        /*background: #0C2D5B;*/
         padding: 2px 8px;
 
         font-family: 'Open Sans', sans-serif;

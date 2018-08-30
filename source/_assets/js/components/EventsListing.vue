@@ -8,7 +8,7 @@
             <a class="button event-button is-info is-loading"> Loading </a>
         </div>
 
-        <div v-else>
+        <div v-else-if="!this.nocontrols">
             <div class="field is-grouped is-grouped-centered">
 
                 <div class="field has-addons">
@@ -75,7 +75,9 @@
     export default {
         name: "events-listing",
         props: ['endpoint',
-            'orgid'],
+            'orgid',
+            'nocontrols'
+        ],
         data() {
             return {
                 events: [],

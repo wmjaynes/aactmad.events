@@ -26,6 +26,7 @@ $info-invert: $brown-invert;
 //$info: $blue;
 
 $link: darken($info, 35%);
+$card-header-background-color: lighten($info, 15%);
 
 $family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $family-serif: "Crimson Text", serif;

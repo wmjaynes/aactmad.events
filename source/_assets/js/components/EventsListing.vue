@@ -53,7 +53,7 @@
 
         <div class="columns is-multiline">
             <div v-for="eventsInMonth in eventsByMonth" :key="eventsInMonth.monthYear"
-                 class="box current-month column is-half">
+                 class="box current-month column" :class="{'is-half': !onecolumn, 'is-12': onecolumn}">
 
                 <div class="month-year-tag">{{ eventsInMonth.monthYear }}</div>
 
@@ -76,7 +76,8 @@
         name: "events-listing",
         props: ['endpoint',
             'orgid',
-            'nocontrols'
+            'nocontrols',
+            'onecolumn',
         ],
         data() {
             return {
@@ -94,6 +95,7 @@
 
         methods: {
             getRecords() {
+                console.log("onecolumn: "+this.onecolumn);
                 axios.get(this.endpoint + "?" + this.getQueryParameters())
                     .then(response => {
 
@@ -116,8 +118,6 @@
                 else {
                     this.endOfDisplayPeriod = this.startOfDisplayPeriod.clone().startOf('day').add(5, "month").endOf("month");
                 }
-                console.log("this.orgid: " + this.orgid)
-                console.log("parsed.orgid: " + parsed.orgId)
                 let orgid = this.orgid ? this.orgid : parsed.orgId;
                 let queryParms =
                     {

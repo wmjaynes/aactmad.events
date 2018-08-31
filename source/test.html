@@ -17,16 +17,22 @@
         :root {
             --my-color: orange;
             --my-other-color: darkorange;
+            --my-light-color: #FFD8A6;
         }
 
         .has-background-info {
-            background-color: var(--my-color) !important;
+            background-color: var(--my-light-color) !important;
         }
 
         .event-header {
-            background-color: var(--my-color);
-            background-image: none;
-            border: 1px solid var(--my-other-color);
+             background-color: var(--my-color);
+             background-image: none !important;
+             border: 1px solid var(--my-other-color);
+         }
+        .event-header:hover {
+            background-color: var(--my-other-color);
+            background-image: none !important;
+            border: 1px solid var(--my-light-color);
         }
 
         .event-button {

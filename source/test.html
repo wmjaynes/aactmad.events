@@ -5,18 +5,16 @@
     <title>Title</title>
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-            crossorigin="anonymous">
-    </script>
+
     <link rel="stylesheet" href="https://events.aactmad.org/assets/build/css/main.css">
+
     <script src="https://events.aactmad.org/assets/build/js/events.js"></script>
+    <!--<script src="/assets/build/js/events.js"></script>-->
 
     <style>
         :root {
-            --my-color: orange;
-            --my-other-color: darkorange;
+            --my-color: #FFA500;
+            --my-dark-color: #DA7800;
             --my-light-color: #FFD8A6;
         }
 
@@ -25,24 +23,30 @@
         }
 
         .event-header {
-             background-color: var(--my-color);
-             background-image: none !important;
-             border: 1px solid var(--my-other-color);
-         }
-        .event-header:hover {
-            background-color: var(--my-other-color);
+            background-color: var(--my-color);
             background-image: none !important;
+            background-image: linear-gradient(180deg, var(--my-light-color), var(--my-color)) !important;
+            border: 1px solid var(--my-dark-color);
+        }
+
+        .event-header:hover {
+            background-color: var(--my-dark-color);
+            background-image: none !important;
+            background-image: linear-gradient(180deg, var(--my-color), var(--my-dark-color)) !important;
             border: 1px solid var(--my-light-color);
         }
 
         .event-button {
             background-color: var(--my-color) !important;
             background-image: none !important;
-            border: 1px solid var(--my-other-color) !important;
+            background-image: linear-gradient(180deg, var(--my-light-color), var(--my-color)) !important;
+            border: 1px solid var(--my-dark-color) !important;
         }
+
         .event-button:hover {
-            background-color: var(--my-other-color) !important;
+            background-color: var(--my-dark-color) !important;
             background-image: none !important;
+            background-image: linear-gradient(180deg, var(--my-color), var(--my-dark-color)) !important;
         }
 
         .event-content {
@@ -54,10 +58,59 @@
 </head>
 <body>
 
-<header class="title">A test page to demo including the calendar in a page.</header>
+<div class="content">
+    <header class="title">Demonstration: including the calendar in a page on another web site.</header>
+    <p>
+        View the source code of this page to see a demonstration of how to include the calendar on a page on your web
+        site. The essential code is shown below:
+    </p>
+    <ul>
+        <li><strong>orgid: </strong>This is the organization id for your organization. This is setup on
+            publicdrum.aactmad.org when you first get an account there. Include this is you wish only
+            events for a particular organization to display. Omit this if you want the
+            entire event calendar to display.
+        </li>
+        <li><strong>nocontrols: </strong>This is either <strong>true</strong> or <strong>false</strong>. If
+            <strong>true</strong> then the controls at the top (like quick search or previous/next) will not be shown.
+        </li>
+        <li>
+            <strong>onecolumn:</strong> This is either <strong>true</strong> or <strong>false</strong>.
+            If <strong>true</strong> then the events will be displayed in one column.
+        </li>
+    </ul>
+    <p>
+        In the source code you will also see an optional style section. Using this as an example,
+        you may change the color scheme of the event calendar. The included example changes
+        the original brown theme to an orange theme.
+    </p>
+</div>
+
+<pre>
+    <code>
+    &lt;script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="https://events.aactmad.org/assets/build/css/main.css"&gt;
+    &lt;script src="https://events.aactmad.org/assets/build/js/events.js"&gt;&lt;/script&gt;
+
+    &lt;div id="app"&gt;
+        &lt;events-listing
+                :orgid="698"
+                :onecolumn="false"
+                :nocontrols="false"
+         &gt;
+        &lt;/events-listing&gt;
+    &lt;/div&gt;
+        </code>
+</pre>
+<hr>
+<hr>
 
 <div id="app">
-    <events-listing endpoint="https://publicdrum.aactmad.org/eventServiceJson.php" orgid="698"></events-listing>
+    <events-listing
+            :orgid="698"
+            :onecolumn="false"
+            :nocontrols="false"
+    >
+    </events-listing>
 </div>
 
 </body>

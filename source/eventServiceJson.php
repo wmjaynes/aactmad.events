@@ -27,6 +27,7 @@ $orgData = "&OrgData=1";
 $startCalendar = null;
 $endCalendar = null;
 $startDate = $endDate = null;
+$detail = 0;
 if (array_key_exists ( 'startCalendar', $_GET )) {
     $startCalendar = $_GET ['startCalendar'];
 }
@@ -45,6 +46,9 @@ if (array_key_exists ( 'aggType', $_GET )) {
 }
 if (array_key_exists ( 'options', $_GET )) {
     $options = $_GET ['options'];
+}
+if (array_key_exists ( 'detail', $_GET )) {
+    $detail = $_GET ['detail'];
 }
 
 /*
@@ -87,10 +91,13 @@ if (array_key_exists ( 'eventId', $_GET )) {
     $numberOfDays = round ( ($endDate->getTimeStamp () - $startDate->getTimeStamp ()) / (60 * 60 * 24) ) + 1;
 
     $options = 'p=d' . (($dayToStart < 0) ? $dayToStart : ('+' . $dayToStart)) . ':' . $numberOfDays;
+    if ($detail == 4) {
+        $options = $options . '&detail=4';
+    }
 }
 
 // $publicDrumUrl = 'http://suapi2.org/api/' . $orgId . '/' . $aggType . '/' . $outputFormat . '/options:' . $options;
-$publicDrumUrl = 'https://publicdrum.aactmad.org/api/' . $orgId . '/' . $aggType . '/' . $outputFormat . '/options:' . $options;
+$publicDrumUrl = 'http://publicdrum.aactmad.org/api/' . $orgId . '/' . $aggType . '/' . $outputFormat . '/options:' . $options;
 $publicDrumAactmadUrl = 'http://publicdrum.aactmad.org/api/' . $orgId . '/' . $aggType . '/' . $outputFormat . '/options:' . $options;
 
 if (! empty ( $eventIds )) {

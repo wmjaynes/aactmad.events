@@ -5,6 +5,13 @@
     <script src="{{ mix('js/events.js', 'assets/build') }}"></script>
 
     <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
         $(function () {
             $('.more').click(function () {
                     $('.more').toggle()
@@ -13,7 +20,11 @@
             $('.less').click(function () {
                     $('.more-content').toggle()
                 }
-            )
+            );
+
+            if (getUrlParameter('noControls')) {
+                $('.controls').hide();
+            }
         });
     </script>
 
@@ -28,7 +39,7 @@
             <h1 class="title">Events Calendar</h1>
         @endif
 
-        <div class="box">
+        <div class="box controls">
             <div class="content">
                 <p>This calendar lists traditional music and dance events in <strong>Michigan</strong>, and sometimes
                     surrounding areas. Unless stated otherwise, all dances welcome new people, with or without a

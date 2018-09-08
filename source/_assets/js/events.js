@@ -1,6 +1,12 @@
+
+try {
+    window.$ = window.jQuery = require('jquery');
+} catch (e) {console.log(e)}
+
 $(function () {
 
     // require('./bootstrap');
+
 
     window.axios = require('axios');
     window.moment = require('moment');

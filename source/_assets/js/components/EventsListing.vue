@@ -74,11 +74,21 @@
 
     export default {
         name: "events-listing",
-        props: ['endpoint',
-            'orgid',
-            'nocontrols',
-            'onecolumn',
-        ],
+        props: {
+            endpoint: {
+                type: String,
+                default: 'https://events.aactmad.org/eventServiceJson.php'
+            },
+            orgid: Number,
+            nocontrols: {
+                type: Boolean,
+                default: false,
+            },
+            onecolumn: {
+                type: Boolean,
+                default: false,
+            },
+        },
         data() {
             return {
                 events: [],
@@ -95,8 +105,8 @@
 
         methods: {
             getRecords() {
-                console.log("onecolumn: "+this.onecolumn);
-                axios.get(this.endpoint + "?" + this.getQueryParameters())
+                let url = this.endpoint + "?" + this.getQueryParameters();
+                axios.get(url)
                     .then(response => {
 
                         this.enhanceEvents(response.data);
@@ -118,7 +128,7 @@
                 else {
                     this.endOfDisplayPeriod = this.startOfDisplayPeriod.clone().startOf('day').add(5, "month").endOf("month");
                 }
-                let orgid = this.orgid ? this.orgid : parsed.orgId;
+                let orgid = parsed.orgId ? parsed.orgId : this.orgid;
                 let queryParms =
                     {
                         startCalendar: this.startOfDisplayPeriod.format("MM/DD/YYYY"),

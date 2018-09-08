@@ -10,7 +10,7 @@
     "devDependencies": {
         "browser-sync": "^2.23.6",
         "browser-sync-webpack-plugin": "^2.0.1",
-        "cross-env": "^3.2.3",
+        "cross-env": "^5.2.0",
         "hasbin": "^1.2.3",
         "laravel-mix": "^2.0.0",
         "node-cmd": "^3.0.0",
@@ -19,6 +19,7 @@
         "yargs": "^4.6.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.3.1",
         "axios": "^0.18.0",
         "bulma": "^0.7.1",
         "bulmaswatch": "^0.7.1",

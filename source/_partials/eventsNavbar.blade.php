@@ -1,7 +1,7 @@
 <nav class="navbar is-info">
     <div class="navbar-brand">
         <a class="navbar-item" href="https://aactmad.org">
-            <img src="/images/aactmad.logo.120x80.png"
+            <img src="https://assets.aactmad.org/images/aactmad.logo.120x80.png"
                  alt="AACTMAD">
         </a>
 

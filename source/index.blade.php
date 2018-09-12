@@ -33,7 +33,7 @@
 @section('body')
 
 
-    <div class="container" id="app">
+    <div class="container">
 
         @if (!$page->justEvents)
             <h1 class="title">Events Calendar</h1>
@@ -68,9 +68,9 @@
         </div>
 
 
-        <div id="event-list-container" class="event-list-container">
+        <div id="app" class="event-list-container">
 
-            <events-listing endpoint="https://publicdrum.aactmad.org/eventServiceJson.php"></events-listing>
+            <events-listing></events-listing>
 
         </div>
 

@@ -20,7 +20,7 @@
         </figure>
         <figure v-else-if="isAactmadOrg(event)" class="image event-header-item is-hidden-mobile">
             <img class="event-image"
-                 src="/images/aactmad.logo.120x80.png">
+                 src="https://assets.aactmad.org/images/aactmad.logo.120x80.png">
         </figure>
         <div v-else class="event-header-item event-image is-hidden-mobile">
         </div>

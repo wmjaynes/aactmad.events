@@ -8,7 +8,7 @@
             <a class="button event-button is-info is-loading"> Loading </a>
         </div>
 
-        <div v-else-if="!this.nocontrols">
+        <div v-else-if="!this.no_controls">
             <div class="field is-grouped is-grouped-centered">
 
                 <div class="field has-addons">
@@ -53,7 +53,7 @@
 
         <div class="columns is-multiline">
             <div v-for="eventsInMonth in eventsByMonth" :key="eventsInMonth.monthYear"
-                 class="box current-month column" :class="{'is-half': !onecolumn, 'is-12': onecolumn}">
+                 class="box current-month column" :class="{'is-half': !one_column, 'is-12': one_column}">
 
                 <div class="month-year-tag">{{ eventsInMonth.monthYear }}</div>
 
@@ -100,11 +100,17 @@
                 startOfDisplayPeriod: moment().startOf('day'),
                 endOfDisplayPeriod: moment().add(5, "month").endOf("month"),
                 norecords: false,
+                no_controls: {
+                    type: Boolean,
+                    default: false
+                },
+                one_column: false,
             }
         },
 
         methods: {
             getRecords() {
+                this.processPropsInQueryString();
                 let url = this.endpoint + "?" + this.getQueryParameters();
                 axios.get(url)
                     .then(response => {
@@ -117,6 +123,15 @@
                     .catch(error => {
                         console.log(error)
                     });
+            },
+            processPropsInQueryString() {
+                let parsed = queryString.parse(location.search);
+                if (typeof parsed.onecolumn !== 'undefined')
+                    this.one_column = parsed.onecolumn == true ? true : false;
+                if (typeof parsed.nocontrols !== 'undefined')
+                    this.no_controls = parsed.nocontrols == true ? true : false;
+                if (typeof parsed.orgId !== 'undefined' && typeof parsed.orgId == 'number')
+                    this.orgid = parsed.orgId;
             },
             getQueryParameters() {
                 let parsed = queryString.parse(location.search);
@@ -248,6 +263,8 @@
         },
 
         mounted() {
+            this.no_controls = this.nocontrols;
+            this.one_column = this.onecolumn;
             this.getRecords();
             // this.getLastEventDate();
         },

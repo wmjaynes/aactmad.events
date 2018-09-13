@@ -30,9 +30,9 @@
                 {{ event.EventName }}
             </div>
             <div class="is-size-6">
-                <span class="value event-start-time text-nowrap"> {{event.EventTime}} </span>
+                <span class="value event-start-time text-nowrap"> {{event.eventStartDate.format('ddd h:mm a')}} </span>
                 -
-                <span class="value event-end-time text-nowrap"> {{event.EventEndTime}} </span>
+                <span class="value event-end-time text-nowrap"> {{event.eventEndDate.format('ddd h:mm a')}} </span>
             </div>
             <div class="is-size-6">
                 <span class="value locality text-nowrap">{{ event.EventCity }}</span>

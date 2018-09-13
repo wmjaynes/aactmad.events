@@ -193,6 +193,9 @@
                 let locale = "en-us";
                 events.forEach(event => {
                     let eventStartDate = moment(event.EventStart);
+                    let eventEndDate = moment(event.EventEnd);
+                    event.eventStartDate = eventStartDate;
+                    event.eventEndDate = eventEndDate;
                     event.uniqueId = event.EventID + "." + event.ReID;
                     // event.EventPrettyDate = eventStartDate.toString("ddd MMM dd, yyyy");
                     event.EventDateMonthYear = eventStartDate.format("MMMM YYYY");

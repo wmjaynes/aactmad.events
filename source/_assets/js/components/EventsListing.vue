@@ -192,28 +192,42 @@
 
                 let locale = "en-us";
                 events.forEach(event => {
-                    let eventStartDate = moment(event.EventStart);
-                    let eventEndDate = moment(event.EventEnd);
-                    event.eventStartDate = eventStartDate;
-                    event.eventEndDate = eventEndDate;
+                    event.eventStartDate = moment(event.EventStart);
+                    event.eventEndDate = moment(event.EventEnd);
+                    event.sortDate = event.eventStartDate;
                     event.uniqueId = event.EventID + "." + event.ReID;
                     // event.EventPrettyDate = eventStartDate.toString("ddd MMM dd, yyyy");
-                    event.EventDateMonthYear = eventStartDate.format("MMMM YYYY");
-                    event.EventDateDayofWeek = eventStartDate.format("ddd");
-                    event.EventDateMonth = eventStartDate.format("MMM");
-                    event.EventDateMonthDay = eventStartDate.format("MMM DD");
-                    event.EventDateMonthFull = eventStartDate.format("MMMM");
-                    event.EventDateYear = eventStartDate.format("YYYY");
+                    event.EventDateMonthYear = event.eventStartDate.format("MMMM YYYY");
+                    event.EventDateDayofWeek = event.eventStartDate.format("ddd");
+                    event.EventDateMonth = event.eventStartDate.format("MMM");
+                    event.EventDateMonthDay = event.eventStartDate.format("MMM DD");
+                    event.EventDateMonthFull = event.eventStartDate.format("MMMM");
+                    event.EventDateYear = event.eventStartDate.format("YYYY");
 
                     event.displayBody = this.showall;
                 });
+                // this.handleMultidayEvents(events);
             },
-            handleMultidayEvents(events) {
-                let multidayevents = [];
-                events.forEach(event => {
 
-                });
-            },
+            // handleMultidayEvents(events) {
+            //
+            //     let multidayevents = events.filter(event => {
+            //         if (event.eventStartDate.isSame(event.eventEndDate, 'day'))
+            //             return false;
+            //         let endOfStartDay = moment(event.eventStartDate).endOf('day');
+            //         if (endOfStartDay.add(8, 'hours').isAfter(event.eventEndDate))
+            //             return false;
+            //         return true;
+            //     })
+            //     console.log('multidayevents: '+JSON.stringify(multidayevents));
+            //     let additionalDays = [];
+            //     multidayevents.forEach(event => {
+            //         let newDay = Object.assign({}, event);
+            //         newDay.sortDate = moment(newDay.sortDate).add(1, 'day').startOf('day');
+            //         additionalDays.push(newDay);
+            //     })
+            // },
+
             generateEventsByMonth(events) {
                 let eventsByMonth = [];
                 let eventsInAMonth = {

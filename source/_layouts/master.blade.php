@@ -15,22 +15,24 @@
 
     <link rel="stylesheet" href="/css/aactmad.css">
 
+
+
     @yield('header')
 </head>
 <body>
 
-    @if ($page->justEvents)
-        @include('_partials.eventsNavbar')
-    @else
-        @include('_partials.navbar')
-    @endif
+@if ($page->justEvents)
+    @include('_partials.eventsNavbar')
+@else
+    @include('_partials.navbar')
+@endif
 
-    <div>
-        @yield('body')
-    </div>
+<div>
+    @yield('body')
+</div>
 
 
-    @include('_partials.footer')
+@include('_partials.footer')
 
 {{--</div>--}}
 </body>

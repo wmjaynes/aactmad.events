@@ -5,6 +5,29 @@
     <script src="{{ mix('js/events.js', 'assets/build') }}"></script>
 
     <script>
+        function detectIE() {
+            var ua = window.navigator.userAgent;
+
+            var msie = ua.indexOf('MSIE ');
+            if (msie > 0) {
+                // IE 10 or older => return version number
+                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+            }
+
+            var trident = ua.indexOf('Trident/');
+            if (trident > 0) {
+                // IE 11 => return version number
+                var rv = ua.indexOf('rv:');
+                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+            }
+
+            // other browser
+            return false;
+        }
+
+    </script>
+
+    <script>
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
             var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
@@ -39,7 +62,12 @@
             <h1 class="title">Events Calendar</h1>
         @endif
 
-        <div class="box controls">
+            <div id='ie-warning' class="notification is-danger" style="display:none;">
+                Sorry, but this events calendar does not work with <strong>Internet Explorer</strong> . Pretty much any other
+                modern browser should be fine.
+            </div>
+            <div class="box controls">
+
             <div class="content">
                 <p>This calendar lists traditional music and dance events in <strong>Michigan</strong>, and sometimes
                     surrounding areas. Unless stated otherwise, all dances welcome new people, with or without a
@@ -73,6 +101,15 @@
             <events-listing></events-listing>
 
         </div>
+
+        <script>
+            var version = detectIE();
+            if (version === false) {
+            }
+            else {
+                document.getElementById("ie-warning").style.display = "block";
+            }
+        </script>
 
     </div>
 

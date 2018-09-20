@@ -62,11 +62,7 @@
             <h1 class="title">Events Calendar</h1>
         @endif
 
-            <div id='ie-warning' class="notification is-danger" style="display:none;">
-                Sorry, but this events calendar does not work with <strong>Internet Explorer</strong> . Pretty much any other
-                modern browser should be fine.
-            </div>
-            <div class="box controls">
+        <div class="box controls">
 
             <div class="content">
                 <p>This calendar lists traditional music and dance events in <strong>Michigan</strong>, and sometimes

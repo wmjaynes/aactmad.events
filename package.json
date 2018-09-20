@@ -8,6 +8,9 @@
         "watch": "npm run local -- --watch"
     },
     "devDependencies": {
+        "@babel/cli": "^7.1.0",
+        "@babel/core": "^7.1.0",
+        "@babel/preset-env": "^7.1.0",
         "browser-sync": "^2.24.7",
         "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.2.0",
@@ -19,13 +22,14 @@
         "yargs": "^4.6.0"
     },
     "dependencies": {
+        "@babel/polyfill": "^7.0.0",
         "@fortawesome/fontawesome-free": "^5.3.1",
         "axios": "^0.18.0",
         "bulma": "^0.7.1",
         "bulmaswatch": "^0.7.1",
         "jquery": "^3.3.1",
         "moment": "^2.22.2",
-        "query-string": "^6.0.1",
+        "query-string": "^5.1.1",
         "vue": "^2.5.17",
         "vue-paypal-checkout": "^3.1.3"
     }

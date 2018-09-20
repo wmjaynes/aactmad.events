@@ -1,4 +1,6 @@
 
+require("@babel/polyfill");
+
 try {
     window.$ = window.jQuery = require('jquery');
 } catch (e) {console.log(e)}

@@ -194,6 +194,12 @@
                 events.forEach(event => {
                     event.eventStartDate = moment(event.EventStart);
                     event.eventEndDate = moment(event.EventEnd);
+
+                    if (event.eventEndDate.isSame(event.eventStartDate, 'day'))
+                        event.eventEndDateFormated = event.eventEndDate.format('h:mm a');
+                    else
+                        event.eventEndDateFormated = event.eventEndDate.format('ddd h:mm a');
+
                     event.sortDate = event.eventStartDate;
                     event.uniqueId = event.EventID + "." + event.ReID;
                     // event.EventPrettyDate = eventStartDate.toString("ddd MMM dd, yyyy");

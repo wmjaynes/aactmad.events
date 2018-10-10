@@ -30,9 +30,9 @@
                 {{ event.EventName }}
             </div>
             <div class="is-size-6">
-                <span class="value event-start-time text-nowrap"> {{event.eventStartDate.format('ddd h:mm a')}} </span>
+                <span class="value event-start-time text-nowrap"> {{event.eventStartDate.format('h:mm a')}} </span>
                 -
-                <span class="value event-end-time text-nowrap"> {{event.eventEndDate.format('ddd h:mm a')}} </span>
+                <span class="value event-end-time text-nowrap"> {{event.eventEndDateFormated}} </span>
             </div>
             <div class="is-size-6">
                 <span class="value locality text-nowrap">{{ event.EventCity }}</span>
@@ -97,7 +97,7 @@
     }
 
     .event-date-badge {
-        background: darken($info, 45%);
+        background: darken($info, 30%);
         border-radius: 100%;
         height: 4rem;
         width: 4rem;
@@ -114,7 +114,7 @@
     }
 
     .event-date-box {
-        background: darken($info, 45%);
+        background: darken($info, 30%);
         max-width: 6rem;
         min-width: 6rem;
         /*background: #0C2D5B;*/

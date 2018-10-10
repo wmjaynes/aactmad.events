@@ -11,12 +11,11 @@
                 <p class='event-admission'>
                     <strong class='event-label'>Admission: </strong>{{ event.EventTickets }}
                 </p>
-                <p v-if="event.EmailLink || event.EventPhone">
+                <p v-if="event.EventEmail || event.EventPhone">
 
-                    <strong v-if="event.EmailLink">EMail:</strong>
+                    <strong>Contact: </strong>
                     <mailto-link :email="event.EventEmail"></mailto-link>
-                    <span v-if="event.EventPhone" class='event-phone'><strong class='event-label'
-                    >Phone: {{ event.EventPhone }}</strong></span>
+                    {{ event.EventPhone }}
                 </p>
             </div>
 

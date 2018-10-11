@@ -29,6 +29,7 @@ $(function () {
     Vue.component('event-body', require('./components/EventBody.vue'));
     Vue.component('event-container', require('./components/EventContainer.vue'));
     Vue.component('events-listing', require('./components/EventsListing.vue'));
+    Vue.component('backtotop', require('./components/BacktoTop.vue'));
 
     const app = new Vue({
         el: '#app'

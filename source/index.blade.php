@@ -94,6 +94,7 @@
 
         <div id="app" class="event-list-container">
 
+            <backtotop></backtotop>
             <events-listing></events-listing>
 
         </div>

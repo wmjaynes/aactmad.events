@@ -57,8 +57,15 @@
 
                 <div class="month-year-tag">{{ eventsInMonth.monthYear }}</div>
 
-                <div v-for="event in eventsInMonth.events" :key="event.uniqueId">
-                    <event-container :event="event"></event-container>
+                <div v-for="eventsInDay in eventsInMonth.eventsByDay" :key="eventsInDay.monthDay"
+                    class="box current-day">
+
+                    <div class="month-day-tag">{{ eventsInDay.weekDayMonthDay}}</div>
+
+                    <div v-for="event in eventsInDay.events" :key="event.uniqueId">
+                        <event-container :event="event"></event-container>
+                    </div>
+
                 </div>
 
             </div>
@@ -204,7 +211,7 @@
                     event.uniqueId = event.EventID + "." + event.ReID;
                     // event.EventPrettyDate = eventStartDate.toString("ddd MMM dd, yyyy");
                     event.EventDateMonthYear = event.eventStartDate.format("MMMM YYYY");
-                    event.EventDateDayofWeek = event.eventStartDate.format("ddd");
+                    event.EventDateWeekDayMonthDay = event.eventStartDate.format("ddd MMM DD");
                     event.EventDateMonth = event.eventStartDate.format("MMM");
                     event.EventDateMonthDay = event.eventStartDate.format("MMM DD");
                     event.EventDateMonthFull = event.eventStartDate.format("MMMM");
@@ -234,6 +241,59 @@
             //     })
             // },
 
+            generateEventsByDay(events) {
+                let eventsByDay= [];
+                let eventsInADay= {
+                    monthDay: "",
+                    monthYear: "",
+                    events: [],
+                };
+                eventsInADay = null;
+                let currentMonthDay = "";
+                events.forEach(event => {
+
+                    if (currentMonthDay !== event.EventDateMonthDay) {
+                        currentMonthDay = event.EventDateMonthDay;
+                        if (eventsInADay) eventsByDay.push(eventsInADay);
+                        eventsInADay = {
+                            monthDay: event.EventDateMonthDay,
+                            monthYear: event.EventDateMonthYear,
+                            weekDayMonthDay: event.EventDateWeekDayMonthDay,
+                            events: [],
+                        };
+                    }
+                    eventsInADay.events.push(event);
+                });
+                if (eventsInADay && eventsInADay.events.length > 0)
+                    eventsByDay.push(eventsInADay);
+
+                return eventsByDay;
+            },
+            generateEventsByMonthX(eventsByDay) {
+                let eventsByMonth = [];
+                let eventsInAMonth = {
+                    monthYear: "",
+                    eventsByDay: [],
+                };
+                eventsInAMonth = null;
+                let currentMonthYear = "";
+                eventsByDay.forEach(eventsInADay => {
+
+                    if (currentMonthYear !== eventsInADay.monthYear) {
+                        currentMonthYear = eventsInADay.monthYear;
+                        if (eventsInAMonth) eventsByMonth.push(eventsInAMonth);
+                        eventsInAMonth = {
+                            monthYear: eventsInADay.monthYear,
+                            eventsByDay: [],
+                        };
+                    }
+                    eventsInAMonth.eventsByDay.push(eventsInADay);
+                });
+                if (eventsInAMonth && eventsInAMonth.eventsByDay.length > 0)
+                    eventsByMonth.push(eventsInAMonth);
+
+                return eventsByMonth;
+            },
             generateEventsByMonth(events) {
                 let eventsByMonth = [];
                 let eventsInAMonth = {
@@ -279,7 +339,8 @@
                     });
                 }
 
-                let eventsByMonth = this.generateEventsByMonth(events);
+                let eventsByDay = this.generateEventsByDay(events)
+                let eventsByMonth = this.generateEventsByMonthX(eventsByDay);
 
                 return eventsByMonth;
             },
@@ -325,7 +386,24 @@
         font-weight: bold;
     }
 
+    .month-day-tag {
+        background-color: #F7F7F7;
+        border-width: 1px 1px 1px 0;
+        border-style: solid;
+        border-color: #DDD;
+        margin-bottom: 0rem;
+        padding-left: 1rem;
+        width: fit-content;
+        padding: 5px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
     .current-month {
+        padding: 0 1rem 0.5rem 0;
+    }
+
+    .current-day{
         padding: 0 1rem 0.5rem 0;
     }
 

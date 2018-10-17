@@ -1,28 +1,25 @@
 <template>
     <header class="card-header event-header">
 
-        <div class='has-text-centered event-date-badge event-header-item is-hidden-tablet'>
-            <span class="value event-dayofweek text-nowrap">{{ event.EventDateDayofWeek }}</span>
-            <br/>
-            <span class="value event-monthday text-nowrap">{{ event.EventDateMonthDay }}</span>
+        <!--<div class='has-text-centered event-date-badge event-header-item is-hidden-tablet'>-->
+            <!--<span class="value event-dayofweek text-nowrap">{{ event.EventDateDayofWeek }}</span>-->
             <!--<br/>-->
-            <!--<span class="value event-year text-nowrap">{{ event.EventDateYear }}</span>-->
-        </div>
-        <div class='has-text-centered event-date-box event-header-item is-hidden-mobile'>
-            <span class="value event-dayofweek text-nowrap">{{ event.EventDateDayofWeek }}</span>
-            <span class="value event-monthday text-nowrap">{{ event.EventDateMonthDay }}</span>
-            <!--<span class="value event-year text-nowrap">{{ event.EventDateYear }}</span>-->
-        </div>
+            <!--<span class="value event-monthday text-nowrap">{{ event.EventDateMonthDay }}</span>-->
+        <!--</div>-->
+        <!--<div class='has-text-centered event-date-box event-header-item is-hidden-mobile'>-->
+            <!--<span class="value event-dayofweek text-nowrap">{{ event.EventDateDayofWeek }}</span>-->
+            <!--<span class="value event-monthday text-nowrap">{{ event.EventDateMonthDay }}</span>-->
+        <!--</div>-->
 
-        <figure v-if="event.EventImageURL" class="image event-header-item is-hidden-mobile">
+        <figure v-if="event.EventImageURL" class="image event-header-item ">
             <img class="event-image"
                  :src="event.EventImageURL">
         </figure>
-        <figure v-else-if="isAactmadOrg(event)" class="image event-header-item is-hidden-mobile">
+        <figure v-else-if="isAactmadOrg(event)" class="image event-header-item ">
             <img class="event-image"
                  src="https://assets.aactmad.org/images/aactmad.logo.120x80.png">
         </figure>
-        <div v-else class="event-header-item event-image is-hidden-mobile">
+        <div v-else class="event-header-item event-image ">
         </div>
 
         <div style="flex-grow: 2;" class=" event-header-item">
@@ -40,7 +37,7 @@
             </div>
         </div>
 
-        <div class="event-header-icon  event-header-item">
+        <div class="event-header-icon  event-header-item is-pulled-right">
             <span
                     class="arrow"
                     :class="{ 'arrow--asc': this.event.displayBody, 'arrow--desc': !this.event.displayBody }"

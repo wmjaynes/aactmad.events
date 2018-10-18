@@ -30,6 +30,8 @@
             </p>
 
             <event-facebook-link :event="event"></event-facebook-link>
+
+            <add-to-google-calendar-link :event="event"></add-to-google-calendar-link>
         </div>
     </div>
 

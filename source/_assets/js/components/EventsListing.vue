@@ -55,7 +55,7 @@
             <div v-for="eventsInMonth in eventsByMonth" :key="eventsInMonth.monthYear"
                  class="box current-month column" :class="{'is-half': !one_column, 'is-12': one_column}">
 
-                <div class="month-year-tag">{{ eventsInMonth.monthYear }}</div>
+                <div class="month-year-tag has-background-info">{{ eventsInMonth.monthYear }}</div>
 
                 <div v-for="eventsInDay in eventsInMonth.eventsByDay" :key="eventsInDay.monthDay"
                     class="box current-day">
@@ -380,7 +380,7 @@
         border-style: solid;
         border-color: #DDD;
         margin-bottom: 1rem;
-        width: fit-content;
+        width: 100%;
         padding: 5px;
         white-space: nowrap;
         font-weight: bold;

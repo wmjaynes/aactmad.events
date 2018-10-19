@@ -1,5 +1,4 @@
 <template>
-    <p>
         <a class="button is-link is-rounded is-outlined"
            target="_blank"
            title="Add to Google Calendar"
@@ -9,7 +8,6 @@
             </span>
             <span> Google</span>
         </a>
-    </p>
 </template>
 
 <script>
@@ -28,7 +26,6 @@
 
                 url += '&trp=false&sprop=&ctz=America%2FNew_York';
 
-                console.log(url);
 
                 return url;
             },

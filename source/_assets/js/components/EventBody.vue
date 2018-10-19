@@ -32,6 +32,7 @@
             <event-facebook-link :event="event"></event-facebook-link>
 
             <add-to-google-calendar-link :event="event"></add-to-google-calendar-link>
+            <ical-link :event="event"></ical-link>
         </div>
     </div>
 

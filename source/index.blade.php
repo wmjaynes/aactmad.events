@@ -93,6 +93,7 @@
 
 
         <div id="app" class="event-list-container">
+            <coming-events-container></coming-events-container>
 
             <backtotop></backtotop>
             <events-listing></events-listing>

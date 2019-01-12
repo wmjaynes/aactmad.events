@@ -33,6 +33,8 @@ $(function () {
     Vue.component('add-to-google-calendar-link', require('./components/AddToGoogleCalendarLink.vue'));
     Vue.component('ical-link', require('./components/ICalLink.vue'));
 
+    Vue.component('coming-events-container', require('./components/coming.events.container.vue'));
+
     const app = new Vue({
         el: '#app'
     });

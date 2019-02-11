@@ -202,44 +202,68 @@
                     event.eventStartDate = moment(event.EventStart);
                     event.eventEndDate = moment(event.EventEnd);
 
-                    if (event.eventEndDate.isSame(event.eventStartDate, 'day'))
+                    if (event.eventEndDate.isSame(event.eventStartDate, 'day')) {
                         event.eventEndDateFormated = event.eventEndDate.format('h:mm a');
-                    else
+                        event.eventStartDateFormated = event.eventStartDate.format('h:mm a');
+                    }
+                    else {
                         event.eventEndDateFormated = event.eventEndDate.format('ddd h:mm a');
+                        event.eventStartDateFormated = event.eventStartDate.format('ddd h:mm a');
+                    }
 
-                    event.sortDate = event.eventStartDate;
+                    event.sortDate = moment(event.eventStartDate);
                     event.uniqueId = event.EventID + "." + event.ReID;
                     // event.EventPrettyDate = eventStartDate.toString("ddd MMM dd, yyyy");
                     event.EventDateMonthYear = event.eventStartDate.format("MMMM YYYY");
                     event.EventDateWeekDayMonthDay = event.eventStartDate.format("ddd MMM DD");
                     event.EventDateMonth = event.eventStartDate.format("MMM");
-                    event.EventDateMonthDay = event.eventStartDate.format("MMM DD");
+
+                    // event.EventDateMonthDay = event.eventStartDate.format("MMM DD");
+                    event.EventDateMonthDay = event.sortDate.format("MMM DD");
+
                     event.EventDateMonthFull = event.eventStartDate.format("MMMM");
                     event.EventDateYear = event.eventStartDate.format("YYYY");
 
                     event.displayBody = this.showall;
                 });
-                // this.handleMultidayEvents(events);
+                this.handleMultidayEvents(events);
             },
 
-            // handleMultidayEvents(events) {
-            //
-            //     let multidayevents = events.filter(event => {
-            //         if (event.eventStartDate.isSame(event.eventEndDate, 'day'))
-            //             return false;
-            //         let endOfStartDay = moment(event.eventStartDate).endOf('day');
-            //         if (endOfStartDay.add(8, 'hours').isAfter(event.eventEndDate))
-            //             return false;
-            //         return true;
-            //     })
-            //     console.log('multidayevents: '+JSON.stringify(multidayevents));
-            //     let additionalDays = [];
-            //     multidayevents.forEach(event => {
-            //         let newDay = Object.assign({}, event);
-            //         newDay.sortDate = moment(newDay.sortDate).add(1, 'day').startOf('day');
-            //         additionalDays.push(newDay);
-            //     })
-            // },
+            handleMultidayEvents(events) {
+
+                let multidayevents = events.filter(event => {
+                    if (event.eventStartDate.isSame(event.eventEndDate, 'day'))
+                        return false;
+                    let endOfStartDay = moment(event.eventStartDate).endOf('day');
+                    if (endOfStartDay.add(8, 'hours').isAfter(event.eventEndDate))
+                        return false;
+                    return true;
+                });
+                console.log('multidayevents: '+JSON.stringify(multidayevents));
+                let additionalDays = [];
+                multidayevents.forEach(event => {
+                    let numOfDays = event.eventEndDate.endOf('day').diff(event.eventStartDate.startOf('day'), 'days');
+                    console.log("numOfDays: " + numOfDays);
+                    for (let i = 1; i <= numOfDays; i++) {
+                        let newDay = Object.assign({}, event);
+                        newDay.sortDate = moment(newDay.sortDate).add(i, 'day').startOf('day');
+                        newDay.EventDateMonthDay = newDay.sortDate.format("MMM DD");
+                        newDay.EventDateWeekDayMonthDay = newDay.sortDate.format("ddd MMM DD");
+                        newDay.uniqueId += "."+i;
+                        additionalDays.push(newDay);
+                        let index = events.findIndex(event => newDay.sortDate.isBefore(event.eventStartDate) );
+                        console.log("index: "+index+" : "+JSON.stringify(newDay.sortDate));
+                        events.splice(index, 0, newDay);
+                        console.log(JSON.stringify(events));
+                    }
+                });
+                console.log('additionalDays: '+JSON.stringify(additionalDays));
+            },
+
+            insertNewEvent(events, newEvent) {
+              let index = events.findIndex(event => newEvent.eventStartDate.isBefore(event.eventStartDate) );
+              console.log("index: "+index);
+            },
 
             generateEventsByDay(events) {
                 let eventsByDay= [];

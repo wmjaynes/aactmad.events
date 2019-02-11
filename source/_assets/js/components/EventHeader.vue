@@ -27,7 +27,7 @@
                 {{ event.EventName }}
             </div>
             <div class="is-size-6">
-                <span class="value event-start-time text-nowrap"> {{event.eventStartDate.format('h:mm a')}} </span>
+                <span class="value event-start-time text-nowrap"> {{event.eventStartDateFormated}} </span>
                 -
                 <span class="value event-end-time text-nowrap"> {{event.eventEndDateFormated}} </span>
             </div>

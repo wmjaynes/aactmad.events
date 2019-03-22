@@ -199,6 +199,7 @@
 
                 let locale = "en-us";
                 events.forEach(event => {
+                    delete event.EventShortDesc;
                     event.eventStartDate = moment(event.EventStart);
                     event.eventEndDate = moment(event.EventEnd);
 

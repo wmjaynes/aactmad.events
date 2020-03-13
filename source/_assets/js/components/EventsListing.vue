@@ -240,11 +240,11 @@
                         return false;
                     return true;
                 });
-                console.log('multidayevents: '+JSON.stringify(multidayevents));
+                // console.log('multidayevents: '+JSON.stringify(multidayevents));
                 let additionalDays = [];
                 multidayevents.forEach(event => {
                     let numOfDays = event.eventEndDate.endOf('day').diff(event.eventStartDate.startOf('day'), 'days');
-                    console.log("numOfDays: " + numOfDays);
+                    // console.log("numOfDays: " + numOfDays);
                     for (let i = 1; i <= numOfDays; i++) {
                         let newDay = Object.assign({}, event);
                         newDay.sortDate = moment(newDay.sortDate).add(i, 'day').startOf('day');
@@ -253,17 +253,17 @@
                         newDay.uniqueId += "."+i;
                         additionalDays.push(newDay);
                         let index = events.findIndex(event => newDay.sortDate.isBefore(event.eventStartDate) );
-                        console.log("index: "+index+" : "+JSON.stringify(newDay.sortDate));
+                        // console.log("index: "+index+" : "+JSON.stringify(newDay.sortDate));
                         events.splice(index, 0, newDay);
-                        console.log(JSON.stringify(events));
+                        // console.log(JSON.stringify(events));
                     }
                 });
-                console.log('additionalDays: '+JSON.stringify(additionalDays));
+                // console.log('additionalDays: '+JSON.stringify(additionalDays));
             },
 
             insertNewEvent(events, newEvent) {
               let index = events.findIndex(event => newEvent.eventStartDate.isBefore(event.eventStartDate) );
-              console.log("index: "+index);
+              // console.log("index: "+index);
             },
 
             generateEventsByDay(events) {

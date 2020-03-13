@@ -1,5 +1,6 @@
 <template>
-    <header class="card-header event-header">
+    <header class="card-header event-header"
+            >
 
         <!--<div class='has-text-centered event-date-badge event-header-item is-hidden-tablet'>-->
             <!--<span class="value event-dayofweek text-nowrap">{{ event.EventDateDayofWeek }}</span>-->
@@ -11,7 +12,7 @@
             <!--<span class="value event-monthday text-nowrap">{{ event.EventDateMonthDay }}</span>-->
         <!--</div>-->
 
-        <figure v-if="event.EventImageURL" class="image event-header-item ">
+        <figure v-if="0 != event.EventImageURL.length" class="image event-header-item x ">
             <img class="event-image"
                  :src="event.EventImageURL">
         </figure>
@@ -19,11 +20,11 @@
             <img class="event-image"
                  src="https://assets.aactmad.org/images/aactmad.logo.120x80.png">
         </figure>
-        <div v-else class="event-header-item event-image ">
+        <div v-else class="event-header-item event-image xx">
         </div>
 
         <div style="flex-grow: 2;" class=" event-header-item">
-            <div class="event-name is-size-6">
+            <div class="event-name is-size-6" v-bind:class="{ cancelled: isCancelled(event) }">
                 {{ event.EventName }}
             </div>
             <div class="is-size-6">
@@ -58,7 +59,10 @@
                     "973", "1144", "828", "1058", "797", "1023", "1058", "2762"]);
             },
             isAactmadOrg(event) {
-                return this.aactmadOrgs().includes(event.OrgID);
+                return this.aactmadOrgs().includes(String(event.OrgID));
+            },
+            isCancelled(event) {
+                return event.EventName.toLowerCase().includes('cancelled')
             },
         },
     }
@@ -70,7 +74,6 @@
 
     .event-header {
 
-        /*background-image: linear-gradient(180deg, #e7f4fd, #a0d5f8);*/
 
         cursor: pointer;
         align-items: center;
@@ -91,6 +94,10 @@
         min-width: 80px;
         max-width: 80px;
         height: auto;
+    }
+
+    .cancelled {
+        background-image: linear-gradient(#ff6f82, #ffaabd, #ffede8);
     }
 
     .event-date-badge {

@@ -92,8 +92,13 @@
         </div>
 
 
+
         <div id="app" class="event-list-container">
             <coming-events-container></coming-events-container>
+
+{{--            <div class="notification is-danger has-text-centered">--}}
+{{--                This site is undergoing maintenance. We will be back as soon as possible.--}}
+{{--            </div>--}}
 
             <backtotop></backtotop>
             <events-listing></events-listing>
